@@ -5,23 +5,38 @@ import Anchor from 'grommet/components/Anchor';
 import Header from 'grommet/components/Header';
 import Footer from 'grommet/components/Footer';
 import Title from 'grommet/components/Title';
+import Sidebar from 'grommet/components/Sidebar';
+import Menu from 'grommet/components/Menu';
+import Button from 'grommet/components/Button';
+
 
 export default class SampleApp extends Component {
   render() {
     return (
       <App centered={false}>
-        <Box full={true}>
-          <Header direction='row' justify='between'
-            pad={{ horizontal: 'medium' }}>
-            <Title>Todo App</Title>
+        <Sidebar colorIndex='neutral-1'>
+          <Header pad='medium'
+            justify='between'>
+            <Title>
+              Title
+            </Title>
           </Header>
-          <Footer primary={true} appCentered={true} direction='column'
-            align='center' pad='small' colorIndex='grey-1'>
-            <p>
-              Build your ideas with <Anchor href='http://grommet.io' target='_blank'>Grommet</Anchor>!
-            </p>
-          </Footer>
-        </Box>
+          <Box flex='grow'
+            justify='start'>
+            <Menu primary={true}>
+              <Anchor href='#'
+                className='active'>
+                First
+              </Anchor>
+              <Anchor href='#'>
+                Second
+              </Anchor>
+              <Anchor href='#'>
+                Third
+              </Anchor>
+            </Menu>
+          </Box>
+        </Sidebar>
       </App>
     );
   }
