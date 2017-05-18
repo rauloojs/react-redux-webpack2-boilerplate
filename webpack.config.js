@@ -110,11 +110,7 @@ if (isProduction) {
   rules.push(
     {
       test: /\.scss$/,
-      // exclude: /node_modules/,
-      include : [
-        path.resolve(__dirname, 'node_modules/grommet'),
-        path.resolve(__dirname, 'src/scss'),
-      ],
+      exclude: /node_modules/,
       use: [
         'style-loader',
         // Using source maps breaks urls in the CSS loader
