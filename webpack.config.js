@@ -9,10 +9,10 @@ const autoprefixer = require('autoprefixer');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-const jsSourcePath = path.join(__dirname, './source/js');
+const jsSourcePath = path.join(__dirname, './src/js');
 const buildPath = path.join(__dirname, './build');
-const imgPath = path.join(__dirname, './source/assets/img');
-const sourcePath = path.join(__dirname, './source');
+const imgPath = path.join(__dirname, './src/assets/img');
+const sourcePath = path.join(__dirname, './src');
 
 // Common plugins
 const plugins = [
@@ -110,7 +110,11 @@ if (isProduction) {
   rules.push(
     {
       test: /\.scss$/,
-      exclude: /node_modules/,
+      // exclude: /node_modules/,
+      include : [
+        path.resolve(__dirname, 'node_modules/grommet'),
+        path.resolve(__dirname, 'src/scss'),
+      ],
       use: [
         'style-loader',
         // Using source maps breaks urls in the CSS loader
@@ -151,11 +155,11 @@ module.exports = {
   devServer: {
     contentBase: isProduction ? buildPath : sourcePath,
     historyApiFallback: true,
-    port: 3000,
+    port: 9000,
     compress: isProduction,
     inline: !isProduction,
     hot: !isProduction,
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     stats: {
       assets: true,
       children: false,
