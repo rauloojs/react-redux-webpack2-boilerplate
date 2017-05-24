@@ -9,7 +9,7 @@ const autoprefixer = require('autoprefixer');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-const jsSourcePath = path.join(__dirname, './src/js');
+const jsSourcePath = path.join(__dirname, './src');
 const buildPath = path.join(__dirname, './build');
 const imgPath = path.join(__dirname, './src/assets/img');
 const sourcePath = path.join(__dirname, './src');
@@ -130,7 +130,7 @@ module.exports = {
   devtool: isProduction ? false : 'source-map',
   context: jsSourcePath,
   entry: {
-    js: './index.js',
+    js: './main.js',
   },
   output: {
     path: buildPath,
