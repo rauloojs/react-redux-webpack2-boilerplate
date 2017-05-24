@@ -3,6 +3,7 @@ import FlowItemsPalette from './FlowItemsPalette';
 import FlowCanvasSettings from './FlowCanvasSettings';
 import Sidebar from 'grommet/components/Sidebar';
 import Box from 'grommet/components/Box';
+import { Link } from 'react-router'
 
 
 export default class FlowSidebar extends Component {
@@ -12,6 +13,7 @@ export default class FlowSidebar extends Component {
         <Box colorIndex='neutral-1'
           full='vertical'
           pad='medium'>
+          <Link to='/' activeClassName='page-layout__nav-item--active'>Home</Link>
           <FlowItemsPalette />
           <FlowCanvasSettings />
         </Box>

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import FlowSidebar from './FlowSidebar';
+import FlowCanvas from './FlowCanvas';
+import Split from 'grommet/components/Split';
 
 
 export default class FlowBuilderView extends Component {
   render() {
     return (
-      <div>
-        <h3>FlowBuilderView</h3>
-      </div>
+      <Split flex='right' priority='right' fixed={true}>
+        <FlowSidebar />
+        <FlowCanvas />
+      </Split>
     );
   }
 }
