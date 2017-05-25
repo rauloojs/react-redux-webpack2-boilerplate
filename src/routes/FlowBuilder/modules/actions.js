@@ -1,12 +1,19 @@
+import axios from 'axios';
+import Api from '../../../modules/Api'
+
 export const actions = {
-  increment
+  getFlowData
 }
 // ------------------------------------
 // Actions
 // ------------------------------------
-export default function increment (value = 1) {
-  return {
-    type    : 'COUNTER_INCREMENT',
-    payload : value
-  }
+export const getFlowData = (flowId) => {
+  return (dispatch, getState) => {
+    return Api('flows/' + flowId + '/').then((response) => {
+        dispatch({
+          type    : 'GET_FLOW_DATA',
+          payload : response
+        });
+      });
+  };
 }

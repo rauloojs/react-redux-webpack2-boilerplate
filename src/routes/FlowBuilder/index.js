@@ -1,7 +1,7 @@
 import { injectReducer } from '../../store/reducers'
 
 export default (store) => ({
-  path : 'flow_builder',
+  path : 'flow_builder/:flowId',
   /*  Async getComponent is only invoked when route matches   */
   getComponent (nextState, callBack) {
     /*  Webpack - use 'require.ensure' to create a split point
@@ -13,7 +13,7 @@ export default (store) => ({
       const reducer = require('./modules/reducers').default
 
       /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'counter', reducer })
+      injectReducer(store, { key: 'flow', reducer })
 
       /*  Return getComponent   */
       callBack(null, FlowBuilderContainer)

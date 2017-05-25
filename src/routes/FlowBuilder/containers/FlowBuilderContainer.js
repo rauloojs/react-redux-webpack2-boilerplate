@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
-import increment from '../modules/actions'
+import { getFlowData } from '../modules/actions'
 import FlowBuilderView from '../components/FlowBuilderView'
 
 
 const mapDispatchToProps = {
-  increment : () => increment(1)
+  getFlowData
 }
 
 const mapStateToProps = (state) => ({
-  counter : state.counter
+  flow: state.flow
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlowBuilderView)
