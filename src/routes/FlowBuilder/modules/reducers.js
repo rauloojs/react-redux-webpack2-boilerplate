@@ -2,14 +2,13 @@
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  ['COUNTER_INCREMENT']    : (state, action) => state + action.payload,
-  ['COUNTER_DOUBLE_ASYNC'] : (state, action) => state * 2
+  ['GET_FLOW_DATA'] : (state, action) => state
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0
+const initialState = {}
 export default function counterReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
