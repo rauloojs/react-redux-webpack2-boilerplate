@@ -19,6 +19,6 @@ export default (store) => ({
       callBack(null, FlowBuilderContainer)
 
     /* Webpack named bundle   */
-  }, 'flow_builder')
+    }, 'flow_builder')
   }
 })
