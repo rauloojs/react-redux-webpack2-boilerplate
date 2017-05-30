@@ -1,3 +1,43 @@
-flow-app {
-    height: 100%;
+.flow-app {
+  height: 100%;
+
+  .flow-canvas-view {
+    overflow: auto;
+
+    .canvas {
+      width: 3000px;
+      height: 3000px;
+      transform-origin: 0 0;
+      position: absolute;
+      background: #eee;
+
+      .flow-item {
+        height:200px;
+        width: 300px;
+        border: 1px solid;
+        float: left;
+        position: absolute;
+
+        .header {
+          height: 50px;
+          border: 1px solid;
+        }
+
+        .choices {
+          height: 50px;
+          border: 1px solid;
+        }
+
+        .conditionals {
+          height: 50px;
+          border: 1px solid;
+        }
+
+        .actions {
+          height: 50px;
+          border: 1px solid;
+        }
+      }
+    }
+  }
 }
