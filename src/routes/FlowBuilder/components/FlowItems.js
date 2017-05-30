@@ -5,16 +5,13 @@ import JsPlumb from '../../../modules/JsPlumb'
 
 export default class FlowItems extends Component {
   componentDidMount() {
-    this.makeFlowItemsDraggable();
+    this.makeFlowItemDraggable();
   }
-  makeFlowItemsDraggable() {
+  makeFlowItemDraggable() {
+
     JsPlumb.ready(() => {
-      console.log(document.querySelectorAll('.flow-item'));
-      JsPlumb.draggable(document.querySelectorAll('.flow-item'), {
-        stop: function (e) {
-          console.log(e.pos[0], e.pos[1]);
-          // component.props.dispatch(updateCanvasItemPosition(component.props.item.id, e.pos[0], e.pos[1]))
-        },
+      console.log(document.querySelectorAll('.flow-item'))
+      JsPlumb.draggable({
         containment: true
       });
     });
