@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import FlowSidebar from './FlowSidebar';
-import FlowCanvas from './FlowCanvas';
+import FlowCanvasView from '../components/FlowCanvasView';
 import Split from 'grommet/components/Split';
 
 
 export default class FlowBuilderView extends Component {
+  componentDidMount() {
+    this.props.getFlowData(this.props.params.flowId);
+  }
   render() {
-    console.log(this.props);
-    // console.log(this.props.getFlowData(this.props.params.flowId));
+    let nodes = this.props.flow.nodes;
+    let flow = this.props.flow;
+    console.log(flow);
+
     return (
       <Split flex='right' priority='right' fixed={true}>
         <FlowSidebar />
-        <FlowCanvas />
+        <FlowCanvasView nodes={nodes} />
       </Split>
     );
   }
