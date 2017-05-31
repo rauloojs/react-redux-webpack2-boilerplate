@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Box from 'grommet/components/Box';
+import Label from 'grommet/components/Label';
 
 
 export default class FlowItemHeader extends Component {
@@ -7,7 +9,11 @@ export default class FlowItemHeader extends Component {
 
     return (
       <div className='header'>
-        <p>Header</p>
+        <Box>
+          <Label>
+            {flowItem.name}
+          </Label>
+        </Box>
       </div>
     );
   }

@@ -1,14 +1,16 @@
 import { connect } from 'react-redux'
-import { getFlowData } from '../modules/actions'
+import { getFlowData, setCanvasZoom } from '../modules/actions'
 import FlowBuilderView from '../components/FlowBuilderView'
 
 
 const mapStateToProps = (state) => ({
-  flow: state.flow
+  flow: state.flowBuilder.flow,
+  ui: state.flowBuilder.ui
 });
 
 const mapDispatchToProps = {
-  getFlowData
+  getFlowData,
+  setCanvasZoom
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlowBuilderView);

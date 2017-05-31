@@ -13,7 +13,7 @@ export default (store) => ({
       const reducer = require('./modules/reducers').default
 
       /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'flow', reducer })
+      injectReducer(store, { key: 'flowBuilder', reducer })
 
       /*  Return getComponent   */
       callBack(null, FlowBuilderContainer)
