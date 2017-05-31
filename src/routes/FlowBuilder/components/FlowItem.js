@@ -23,6 +23,7 @@ export default class FlowItem extends Component {
         });
         JsPlumb.addEndpoint(uuid, newTargetEndpoint(uuid));
         JsPlumb.addEndpoint(uuid, newSourceEndpoint(uuid, ['Bottom'], 'bottom'));
+        // TODO: Use maketarget
       });
     }
   }

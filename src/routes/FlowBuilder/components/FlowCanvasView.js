@@ -6,13 +6,28 @@ import JsPlumb from '../../../modules/JsPlumb'
 
 export default class FlowCanvasView extends Component {
   componentDidMount() {
+    let component = this;
+
     JsPlumb.ready(() => {
       JsPlumb.setContainer('canvas');
       JsPlumb.setZoom(this.props.zoom);
       JsPlumb.bind('connection', function(info) {
-        let id = info.sourceId;
-        let next = info.targetId;
-        console.log(id, next);
+        let source = info.sourceId;
+        let names = info.sourceId.split('_');
+        let target = info.targetId;
+
+        if (names[0].startsWith('conditional')) {
+          component.props.connectConditionalToQuestion(names[1], target, source)
+        } else {
+          if (names[0].startsWith('action')) {
+            component.props.connectActionToQuestion(names[1], target, source)
+          } else {
+            component.props.connectQuestionToQuestion(source, target)
+          }
+        }
+
+        console.log(source, target);
+
       });
 
       JsPlumb.bind('connectionMoved', function(info) {

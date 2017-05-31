@@ -8,15 +8,25 @@ const ACTION_HANDLERS = {
     });
   },
   ['SET_CANVAS_ZOOM'] : (state, action) => {
-    console.log(state, action);
     return Object.assign({}, state, {
       ui: {
         zoom: action.zoom
       }
     });
+  },
+  ['CONNECT_QUESTION_TO_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['CONNECT_CONDITIONAL_TO_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['CONNECT_ACTION_TO_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
   }
 }
-
 // ------------------------------------
 // Reducer
 // ------------------------------------
