@@ -7,7 +7,10 @@ import { Link } from 'react-router'
 
 
 export default class FlowSidebar extends Component {
+
   render() {
+    let onZoomUpdate = this.props.onZoomUpdate;
+    
     return (
       <Sidebar ref='sidebar' size='medium' full={true}>
         <Box colorIndex='neutral-1'
@@ -15,7 +18,7 @@ export default class FlowSidebar extends Component {
           pad='medium'>
           <Link to='/' activeClassName='page-layout__nav-item--active'>Home</Link>
           <FlowItemsPalette />
-          <FlowCanvasSettings />
+          <FlowCanvasSettings onZoomUpdate={onZoomUpdate}/>
         </Box>
       </Sidebar>
     );

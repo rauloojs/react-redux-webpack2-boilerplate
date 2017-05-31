@@ -9,14 +9,15 @@ export default class FlowBuilderView extends Component {
     this.props.getFlowData(this.props.params.flowId);
   }
   render() {
-    let nodes = this.props.flow.nodes;
     let flow = this.props.flow;
-    console.log(flow);
+    let setCanvasZoom = this.props.setCanvasZoom;
+    let nodes = this.props.flow.nodes;
+    let zoom = this.props.ui.zoom;
 
     return (
       <Split flex='right' priority='right' fixed={true}>
-        <FlowSidebar />
-        <FlowCanvasView nodes={nodes} />
+        <FlowSidebar onZoomUpdate={setCanvasZoom}/>
+        <FlowCanvasView zoom={zoom} nodes={nodes} />
       </Split>
     );
   }

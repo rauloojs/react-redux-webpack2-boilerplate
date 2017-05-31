@@ -3,7 +3,7 @@ import FlowItemHeader from './FlowItemHeader';
 import Choices from './Choices';
 import Conditionals from './Conditionals';
 import Actions from './Actions';
-import JsPlumb from '../../../modules/JsPlumb'
+import JsPlumb, { newTargetEndpoint, newSourceEndpoint } from '../../../modules/JsPlumb'
 
 
 export default class FlowItem extends Component {
@@ -20,28 +20,23 @@ export default class FlowItem extends Component {
             console.log(e.pos[0], e.pos[1]);
             // component.props.dispatch(updateCanvasItemPosition(component.props.item.id, e.pos[0], e.pos[1]))
           }
-          // containment: true
         });
+        JsPlumb.addEndpoint(uuid, newTargetEndpoint(uuid));
+        JsPlumb.addEndpoint(uuid, newSourceEndpoint(uuid, ['Bottom'], 'bottom'));
       });
     }
   }
   render() {
     let flowItem = this.props.flowItem || {};
-    let choices = [];
-    let conditionals = [];
-    let actions = [];
     let newStyle = {left: flowItem.x, top: flowItem.y}
-    // let conditionals = this.props.flowItem.conditionals;
-    // let choices = this.props.flowItem.options.choices;
-    // let actions = this.props.flowItem.actions;
 
+    //TODO: use Accordion component
     return (
       <div className='flow-item' id={flowItem.uuid} style={newStyle}>
-        <p>FlowItem</p>
         <FlowItemHeader flowItem={flowItem}/>
-        <Choices choices={choices}/>
-        <Conditionals conditionals={conditionals}/>
-        <Actions actions={actions}/>
+        <Choices flowItem={flowItem}/>
+        <Conditionals flowItem={flowItem}/>
+        <Actions flowItem={flowItem}/>
       </div>
     );
   }
