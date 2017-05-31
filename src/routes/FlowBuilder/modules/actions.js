@@ -22,3 +22,24 @@ export const setCanvasZoom = (zoom) => ({
   type: 'SET_CANVAS_ZOOM',
   zoom: zoom * 0.1
 });
+
+
+export const connectQuestionToQuestion = (sourceUuid, targetUuid) => ({
+  type: 'CONNECT_QUESTION_TO_QUESTION',
+  sourceUuid,
+  targetUuid
+});
+
+export const connectConditionalToQuestion = (sourceUuid, targetUuid, conditional) => ({
+  type: 'CONNECT_CONDITIONAL_TO_QUESTION',
+  sourceUuid,
+  targetUuid,
+  conditional
+});
+
+export const connectActionToQuestion = (sourceUuid, targetUuid, action) => ({
+  type: 'CONNECT_ACTION_TO_QUESTION',
+  sourceUuid,
+  targetUuid,
+  action
+});
