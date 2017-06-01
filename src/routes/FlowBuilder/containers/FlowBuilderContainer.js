@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { getFlowData, setCanvasZoom,
-  updateFlowItemPosition, addConditionalToQuestion, addActionToQuestion,
-  connectQuestionToQuestion, connectConditionalToQuestion, connectActionToQuestion,
-  detachQuestionFromQuestion, detachConditionalFromQuestion, detachActionFromQuestion,
+  updateFlowItemPosition, addConditionalToItem, addActionToItem,
+  connectItemToItem, connectConditionalToItem, connectActionToItem,
+  detachItemFromItem, detachConditionalFromItem, detachActionFromItem,
  } from '../modules/actions'
 import FlowBuilderView from '../components/FlowBuilderView'
 
@@ -15,14 +15,14 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getFlowData,
   setCanvasZoom,
-  addConditionalToQuestion,
-  addActionToQuestion,
-  connectQuestionToQuestion,
-  connectConditionalToQuestion,
-  connectActionToQuestion,
-  detachQuestionFromQuestion,
-  detachConditionalFromQuestion,
-  detachActionFromQuestion,
+  addConditionalToItem,
+  addActionToItem,
+  connectItemToItem,
+  connectConditionalToItem,
+  connectActionToItem,
+  detachItemFromItem,
+  detachConditionalFromItem,
+  detachActionFromItem,
   updateFlowItemPosition
 };
 

@@ -146,6 +146,12 @@ module.exports = {
       path.resolve(__dirname, 'node_modules'),
       jsSourcePath,
     ],
+    alias: {
+      'jquery': 'jquery/dist/jquery.js',
+      'jquery-ui': 'jquery-ui-dist/jquery-ui.js',
+      'Api': path.resolve(__dirname, 'src/modules/Api'),
+      'JsPlumb': path.resolve(__dirname, 'src/modules/JsPlumb'),
+    }
   },
   plugins,
   devServer: {

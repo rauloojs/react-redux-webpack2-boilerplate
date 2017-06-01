@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import FlowSidebar from './FlowSidebar';
-import FlowCanvasView from '../components/FlowCanvasView';
+import FlowCanvasContainer from '../containers/FlowCanvasContainer';
 import Split from 'grommet/components/Split';
-import JsPlumb from '../../../modules/JsPlumb'
+import JsPlumb from 'JsPlumb'
 
 
 export default class FlowBuilderView extends Component {
@@ -39,13 +39,13 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.connectConditionalToQuestion(sourceData.id, target, source)
+            component.props.connectConditionalToItem(sourceData.id, target, source)
             break;
           case 'action':
-            component.props.connectActionToQuestion(sourceData.id, target, source)
+            component.props.connectActionToItem(sourceData.id, target, source)
             break;
           default:
-            component.props.connectQuestionToQuestion(source, target)
+            component.props.connectItemToItem(source, target)
         }
       });
 
@@ -56,13 +56,13 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.detachConditionalFromQuestion(sourceData.id, target, source)
+            component.props.detachConditionalFromItem(sourceData.id, target, source)
             break;
           case 'action':
-            component.props.detachActionFromQuestion(sourceData.id, target, source)
+            component.props.detachActionFromItem(sourceData.id, target, source)
             break;
           default:
-            component.props.detachQuestionFromQuestion(source, target)
+            component.props.detachItemFromItem(source, target)
         }
       });
 
@@ -73,13 +73,13 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.detachConditionalFromQuestion(sourceData.id, target, source)
+            component.props.detachConditionalFromItem(sourceData.id, target, source)
             break;
           case 'action':
-            component.props.detachActionFromQuestion(sourceData.id, target, source)
+            component.props.detachActionFromItem(sourceData.id, target, source)
             break;
           default:
-            component.props.detachQuestionFromQuestion(source, target)
+            component.props.detachItemFromItem(source, target)
         }
       });
     });
@@ -91,7 +91,7 @@ export default class FlowBuilderView extends Component {
     return (
       <Split flex='right' priority='right' fixed={true}>
         <FlowSidebar />
-        <FlowCanvasView zoom={zoom} nodes={nodes} />
+        <FlowCanvasContainer zoom={zoom} nodes={nodes} />
       </Split>
     );
   }

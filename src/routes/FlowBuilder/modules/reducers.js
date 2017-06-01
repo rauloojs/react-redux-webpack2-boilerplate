@@ -14,27 +14,27 @@ const ACTION_HANDLERS = {
       }
     });
   },
-  ['CONNECT_QUESTION_TO_QUESTION'] : (state, action) => {
+  ['CONNECT_ITEM_TO_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['CONNECT_CONDITIONAL_TO_QUESTION'] : (state, action) => {
+  ['CONNECT_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['CONNECT_ACTION_TO_QUESTION'] : (state, action) => {
+  ['CONNECT_ACTION_TO_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['DETACH_QUESTION_FROM_QUESTION'] : (state, action) => {
+  ['DETACH_ITEM_FROM_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['DETACH_CONDITIONAL_FROM_QUESTION'] : (state, action) => {
+  ['DETACH_CONDITIONAL_FROM_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['DETACH_ACTION_FROM_QUESTION'] : (state, action) => {
+  ['DETACH_ACTION_FROM_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
@@ -42,11 +42,15 @@ const ACTION_HANDLERS = {
     console.log(action);
     return state;
   },
-  ['ADD_CONDITIONAL_TO_QUESTION'] : (state, action) => {
+  ['ADD_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);
     return state;
   },
-  ['ADD_ACTION_TO_QUESTION'] : (state, action) => {
+  ['ADD_ACTION_TO_ITEM'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['ADD_ITEM_TO_CANVAS'] : (state, action) => {
     console.log(action);
     return state;
   }
@@ -59,7 +63,7 @@ const initialState = {
     nodes: []
   },
   ui: {
-    zoom: 1
+    zoom: 0.8
   }
 }
 export default function flowReducer (state = initialState, action) {
