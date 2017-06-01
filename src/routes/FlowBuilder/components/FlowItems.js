@@ -18,11 +18,12 @@ export default class FlowItems extends Component {
   }
   render() {
     let flowItems = this.props.flowItems;
+    let onFlowItemDrag = this.props.onFlowItemDrag;
 
     return (
       <div className='flowItems'>
         {flowItems.map((flowItem, key) =>
-          <FlowItem key={key} flowItem={flowItem}/>
+          <FlowItem key={key} flowItem={flowItem} onFlowItemDrag={onFlowItemDrag}/>
         )}
       </div>
     );

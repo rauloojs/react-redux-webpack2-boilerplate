@@ -25,6 +25,22 @@ const ACTION_HANDLERS = {
   ['CONNECT_ACTION_TO_QUESTION'] : (state, action) => {
     console.log(action);
     return state;
+  },
+  ['DETACH_QUESTION_FROM_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['DETACH_CONDITIONAL_FROM_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['DETACH_ACTION_FROM_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['UPDATE_FLOWITEM_POSITION'] : (state, action) => {
+    console.log(action);
+    return state;
   }
 }
 // ------------------------------------

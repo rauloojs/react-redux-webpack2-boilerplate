@@ -6,6 +6,27 @@ import JsPlumb from '../../../modules/JsPlumb'
 
 
 export default class FlowBuilderView extends Component {
+  resolveSourceId(sourceId) {
+    let items = sourceId.split('_');
+
+    if (items[0].startsWith('conditional')) {
+      return {
+        type: 'conditional',
+        id: items[1]
+      };
+    } else {
+      if (items[0].startsWith('action')) {
+        return {
+          type: 'action',
+          id: items[1]
+        };
+      } else {
+        return {
+          type: ''
+        };
+      }
+    }
+  }
   componentDidMount() {
     this.props.getFlowData(this.props.params.flowId);
 
@@ -13,39 +34,67 @@ export default class FlowBuilderView extends Component {
     JsPlumb.ready(() => {
       JsPlumb.bind('connection', function(info) {
         let source = info.sourceId;
-        let names = info.sourceId.split('_');
         let target = info.targetId;
+        let sourceData = component.resolveSourceId(source);
 
-        if (names[0].startsWith('conditional')) {
-          component.props.connectConditionalToQuestion(names[1], target, source)
-        } else {
-          if (names[0].startsWith('action')) {
-            component.props.connectActionToQuestion(names[1], target, source)
-          } else {
+        switch (sourceData.type) {
+          case 'conditional':
+            component.props.connectConditionalToQuestion(sourceData.id, target, source)
+            break;
+          case 'action':
+            component.props.connectActionToQuestion(sourceData.id, target, source)
+            break;
+          default:
             component.props.connectQuestionToQuestion(source, target)
-          }
         }
       });
 
       JsPlumb.bind('connectionMoved', function(info) {
-        console.log('connectionMoved');
+        let source = info.originalSourceId;
+        let target = info.originalTargetId;
+        let sourceData = component.resolveSourceId(source);
+
+        switch (sourceData.type) {
+          case 'conditional':
+            component.props.detachConditionalFromQuestion(sourceData.id, target, source)
+            break;
+          case 'action':
+            component.props.detachActionFromQuestion(sourceData.id, target, source)
+            break;
+          default:
+            component.props.detachQuestionFromQuestion(source, target)
+        }
       });
 
       JsPlumb.bind('connectionDetached', function(info) {
-        console.log('connectionDetached');
+        let source = info.sourceId;
+        let target = info.targetId;
+        let sourceData = component.resolveSourceId(source);
+
+        switch (sourceData.type) {
+          case 'conditional':
+            component.props.detachConditionalFromQuestion(sourceData.id, target, source)
+            break;
+          case 'action':
+            component.props.detachActionFromQuestion(sourceData.id, target, source)
+            break;
+          default:
+            component.props.detachQuestionFromQuestion(source, target)
+        }
       });
     });
   }
   render() {
     let flow = this.props.flow;
     let setCanvasZoom = this.props.setCanvasZoom;
+    let updateFlowItemPosition = this.props.updateFlowItemPosition;
     let nodes = this.props.flow.nodes;
     let zoom = this.props.ui.zoom;
 
     return (
       <Split flex='right' priority='right' fixed={true}>
         <FlowSidebar onZoomUpdate={setCanvasZoom}/>
-        <FlowCanvasView zoom={zoom} nodes={nodes} connectQuestionToQuestion={this.props.connectQuestionToQuestion} />
+        <FlowCanvasView zoom={zoom} nodes={nodes} onFlowItemDrag={updateFlowItemPosition} />
       </Split>
     );
   }

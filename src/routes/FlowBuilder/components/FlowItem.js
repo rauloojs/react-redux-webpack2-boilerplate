@@ -12,13 +12,14 @@ export default class FlowItem extends Component {
   }
   makeFlowItemDraggable() {
     let uuid = this.props.flowItem.uuid;
+    let component = this;
 
     if (uuid) {
       JsPlumb.ready(() => {
         JsPlumb.draggable(uuid, {
           stop: function (e) {
-            console.log(e.pos[0], e.pos[1]);
-            // component.props.dispatch(updateCanvasItemPosition(component.props.item.id, e.pos[0], e.pos[1]))
+            console.log(e.pos[0], e.pos[1], component.props.flowItem.uuid);
+            component.props.onFlowItemDrag(component.props.flowItem.uuid, e.pos[0], e.pos[1]);
           }
         });
         JsPlumb.addEndpoint(uuid, newTargetEndpoint(uuid));
