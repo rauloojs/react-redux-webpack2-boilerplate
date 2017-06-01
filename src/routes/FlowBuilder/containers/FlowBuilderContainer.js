@@ -9,7 +9,8 @@ import FlowBuilderView from '../components/FlowBuilderView'
 
 const mapStateToProps = (state) => ({
   flow: state.flowBuilder.flow,
-  ui: state.flowBuilder.ui
+  ui: state.flowBuilder.ui,
+  flowItems: state.flowBuilder.flowItems
 });
 
 const mapDispatchToProps = {

@@ -19,13 +19,13 @@ export default class FlowItemsPalette extends Component {
 
   }
   render() {
+    let flowItems = this.props.flowItems;
+
     return (
       <div>
-        <FlowItemDraggable id='fi-draggable-1'/>
-        <FlowItemDraggable id='fi-draggable-2'/>
-        <FlowItemDraggable id='fi-draggable-3'/>
-        <FlowItemDraggable id='fi-draggable-4'/>
-        <FlowItemDraggable id='fi-draggable-5'/>
+        {flowItems.map((flowItem, key) =>
+          <FlowItemDraggable key={key} id={'fi-draggable-' + key} flowItem={flowItem} />
+        )}
       </div>
     );
   }

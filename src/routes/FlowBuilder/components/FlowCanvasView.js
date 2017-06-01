@@ -21,13 +21,13 @@ export default class FlowCanvasView extends Component {
 
     $('#canvas').droppable({
       drop: function(e, ui){
-        let droppedElement = ui.helper.clone();
+        let el = ui.helper.clone();
+        let itemId = Number(el[0].dataset.itemId);
         let newPosX = (ui.offset.left - 256) / (component.props.zoom);
         let newPosY = ui.offset.top / (component.props.zoom);
         ui.helper.remove();
 
-        console.log(droppedElement, newPosX, newPosY);
-        component.props.addItemToCanvas('type', 'Q', newPosX, newPosY)
+        component.props.addItemToCanvas(itemId, newPosX, newPosY);
       }
     });
   }

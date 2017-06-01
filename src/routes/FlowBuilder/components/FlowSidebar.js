@@ -9,13 +9,15 @@ import { Link } from 'react-router'
 export default class FlowSidebar extends Component {
 
   render() {
+    let flowItems = this.props.flowItems;
+
     return (
       <Sidebar ref='sidebar' size='medium' full={true}>
         <Box colorIndex='neutral-1'
           full='vertical'
           pad='medium'>
           <Link to='/' activeClassName='page-layout__nav-item--active'>Home</Link>
-          <FlowItemsPalette />
+          <FlowItemsPalette flowItems={flowItems}/>
           <FlowCanvasSettingsContainer />
         </Box>
       </Sidebar>

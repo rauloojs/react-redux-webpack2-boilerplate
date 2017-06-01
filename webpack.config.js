@@ -151,6 +151,7 @@ module.exports = {
       'jquery-ui': 'jquery-ui-dist/jquery-ui.js',
       'Api': path.resolve(__dirname, 'src/modules/Api'),
       'JsPlumb': path.resolve(__dirname, 'src/modules/JsPlumb'),
+      'FlowUtils': path.resolve(__dirname, 'src/modules/FlowUtils'),
     }
   },
   plugins,
