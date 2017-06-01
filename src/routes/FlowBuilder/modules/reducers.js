@@ -84,6 +84,42 @@ const initialState = {
       name: 'Pregunta de texto',
       category: 'question',
       type: 'text'
+    },
+    {
+      id: 2,
+      name: 'Pregunta booleana',
+      category: 'question',
+      type: 'boolean'
+    },
+    {
+      id: 3,
+      name: 'Pregunta de selección',
+      category: 'question',
+      type: 'single_choice'
+    },
+    {
+      id: 4,
+      name: 'Múltiple selección',
+      category: 'question',
+      type: 'multiple_choice'
+    },
+    {
+      id: 5,
+      name: 'Bloque de texto',
+      category: 'block',
+      type: 'text'
+    },
+    {
+      id: 7,
+      name: 'Pregunta de foto',
+      category: 'question',
+      type: 'photo'
+    },
+    {
+      id: 8,
+      name: 'Pregunta de fecha',
+      category: 'question',
+      type: 'date'
     }
   ]
 }
