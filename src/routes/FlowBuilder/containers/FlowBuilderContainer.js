@@ -1,5 +1,8 @@
 import { connect } from 'react-redux'
-import { getFlowData, setCanvasZoom, connectQuestionToQuestion, connectConditionalToQuestion, connectActionToQuestion } from '../modules/actions'
+import { getFlowData, setCanvasZoom, updateFlowItemPosition,
+  connectQuestionToQuestion, connectConditionalToQuestion, connectActionToQuestion,
+  detachQuestionFromQuestion, detachConditionalFromQuestion, detachActionFromQuestion,
+ } from '../modules/actions'
 import FlowBuilderView from '../components/FlowBuilderView'
 
 
@@ -13,7 +16,11 @@ const mapDispatchToProps = {
   setCanvasZoom,
   connectQuestionToQuestion,
   connectConditionalToQuestion,
-  connectActionToQuestion
+  connectActionToQuestion,
+  detachQuestionFromQuestion,
+  detachConditionalFromQuestion,
+  detachActionFromQuestion,
+  updateFlowItemPosition
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlowBuilderView);

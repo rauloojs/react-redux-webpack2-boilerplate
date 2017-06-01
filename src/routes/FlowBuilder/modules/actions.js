@@ -43,3 +43,30 @@ export const connectActionToQuestion = (sourceUuid, targetUuid, action) => ({
   targetUuid,
   action
 });
+
+export const detachQuestionFromQuestion = (sourceUuid, targetUuid) => ({
+  type: 'DETACH_QUESTION_FROM_QUESTION',
+  sourceUuid,
+  targetUuid
+});
+
+export const detachConditionalFromQuestion = (sourceUuid, targetUuid, conditional) => ({
+  type: 'DETACH_CONDITIONAL_FROM_QUESTION',
+  sourceUuid,
+  targetUuid,
+  conditional
+});
+
+export const detachActionFromQuestion = (sourceUuid, targetUuid, action) => ({
+  type: 'DETACH_ACTION_FROM_QUESTION',
+  sourceUuid,
+  targetUuid,
+  action
+});
+
+export const updateFlowItemPosition = (uuid, newX, newY) => ({
+  type: 'UPDATE_FLOWITEM_POSITION',
+  uuid,
+  newX,
+  newY
+});
