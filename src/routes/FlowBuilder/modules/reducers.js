@@ -17,8 +17,18 @@ const ACTION_HANDLERS = {
     });
   },
   ['CONNECT_ITEM_TO_ITEM'] : (state, action) => {
-    console.log(action);
-    return state;
+    let sourceIndex = state.flow.nodes.findIndex(item => item.uuid === action.sourceUuid);
+    let targetIndex = state.flow.nodes.findIndex(item => item.uuid === action.targetUuid);
+
+    let newNodes = [...state.flow.nodes];
+    newNodes[sourceIndex].next = action.targetUuid;
+    newNodes[targetIndex].previous = action.sourceUuid;
+
+    return Object.assign({}, state, {
+      flow: {
+        nodes: newNodes
+      }
+    });
   },
   ['CONNECT_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);
@@ -30,7 +40,20 @@ const ACTION_HANDLERS = {
   },
   ['DETACH_ITEM_FROM_ITEM'] : (state, action) => {
     console.log(action);
-    return state;
+    let sourceIndex = state.flow.nodes.findIndex(item => item.uuid === action.sourceUuid);
+    let targetIndex = state.flow.nodes.findIndex(item => item.uuid === action.targetUuid);
+
+    let newNodes = [...state.flow.nodes];
+    newNodes[sourceIndex].next = null;
+    newNodes[targetIndex].previous = null;
+
+    let newState = Object.assign({}, state, {
+      flow: {
+        nodes: newNodes
+      }
+    });
+
+    return newState;
   },
   ['DETACH_CONDITIONAL_FROM_ITEM'] : (state, action) => {
     console.log(action);
@@ -42,7 +65,19 @@ const ACTION_HANDLERS = {
   },
   ['UPDATE_FLOWITEM_POSITION'] : (state, action) => {
     console.log(action);
-    return state;
+    let itemIndex = state.flow.nodes.findIndex(item => item.uuid === action.uuid);
+
+    let newNodes = [...state.flow.nodes];
+    newNodes[itemIndex].x = action.newX;
+    newNodes[itemIndex].y = action.newY;
+
+    let newState = Object.assign({}, state, {
+      flow: {
+        nodes: newNodes
+      }
+    });
+
+    return newState;
   },
   ['ADD_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);

@@ -10,11 +10,11 @@ export const actions = {
 export const getFlowData = (flowId) => {
   return (dispatch, getState) => {
     return Api('flows/' + flowId + '/').then((flow) => {
-        dispatch({
-          type    : 'GET_FLOW_DATA',
-          payload : flow.data
-        });
+      dispatch({
+        type    : 'GET_FLOW_DATA',
+        payload : flow.data
       });
+    });
   };
 };
 
