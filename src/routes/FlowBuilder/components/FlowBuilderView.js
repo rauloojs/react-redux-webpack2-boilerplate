@@ -85,16 +85,13 @@ export default class FlowBuilderView extends Component {
     });
   }
   render() {
-    let flow = this.props.flow;
-    let setCanvasZoom = this.props.setCanvasZoom;
-    let updateFlowItemPosition = this.props.updateFlowItemPosition;
     let nodes = this.props.flow.nodes;
     let zoom = this.props.ui.zoom;
 
     return (
       <Split flex='right' priority='right' fixed={true}>
-        <FlowSidebar onZoomUpdate={setCanvasZoom}/>
-        <FlowCanvasView zoom={zoom} nodes={nodes} onFlowItemDrag={updateFlowItemPosition} />
+        <FlowSidebar />
+        <FlowCanvasView zoom={zoom} nodes={nodes} />
       </Split>
     );
   }
