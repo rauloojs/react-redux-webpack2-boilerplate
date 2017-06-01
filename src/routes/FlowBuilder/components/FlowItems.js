@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
-import FlowItem from './FlowItem';
+import FlowItemContainer from '../containers/FlowItemContainer';
 import JsPlumb from '../../../modules/JsPlumb'
 
 
-export default class FlowItems extends Component {
-  componentDidMount() {
-    this.makeFlowItemDraggable();
-  }
-  makeFlowItemDraggable() {
-
-    // JsPlumb.ready(() => {
-    //   console.log(document.querySelectorAll('.flow-item'))
-    //   JsPlumb.draggable({
-    //     containment: true
-    //   });
-    // });
-  }
+export default class FlowItemContainers extends Component {
   render() {
     let flowItems = this.props.flowItems;
-    let onFlowItemDrag = this.props.onFlowItemDrag;
 
     return (
       <div className='flowItems'>
         {flowItems.map((flowItem, key) =>
-          <FlowItem key={key} flowItem={flowItem} onFlowItemDrag={onFlowItemDrag}/>
+          <FlowItemContainer key={key} flowItem={flowItem} />
         )}
       </div>
     );

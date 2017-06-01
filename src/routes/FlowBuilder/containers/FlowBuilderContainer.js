@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import { getFlowData, setCanvasZoom, updateFlowItemPosition,
+import { getFlowData, setCanvasZoom,
+  updateFlowItemPosition, addConditionalToQuestion, addActionToQuestion,
   connectQuestionToQuestion, connectConditionalToQuestion, connectActionToQuestion,
   detachQuestionFromQuestion, detachConditionalFromQuestion, detachActionFromQuestion,
  } from '../modules/actions'
@@ -14,6 +15,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getFlowData,
   setCanvasZoom,
+  addConditionalToQuestion,
+  addActionToQuestion,
   connectQuestionToQuestion,
   connectConditionalToQuestion,
   connectActionToQuestion,

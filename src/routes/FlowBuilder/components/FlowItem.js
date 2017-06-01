@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FlowItemHeader from './FlowItemHeader';
+import FlowItemHeaderContainer from '../containers/FlowItemHeaderContainer';
 import Choices from './Choices';
 import Conditionals from './Conditionals';
 import Actions from './Actions';
@@ -18,8 +18,7 @@ export default class FlowItem extends Component {
       JsPlumb.ready(() => {
         JsPlumb.draggable(uuid, {
           stop: function (e) {
-            console.log(e.pos[0], e.pos[1], component.props.flowItem.uuid);
-            component.props.onFlowItemDrag(component.props.flowItem.uuid, e.pos[0], e.pos[1]);
+            component.props.updateFlowItemPosition(component.props.flowItem.uuid, e.pos[0], e.pos[1]);
           }
         });
         JsPlumb.addEndpoint(uuid, newTargetEndpoint(uuid));
@@ -35,7 +34,7 @@ export default class FlowItem extends Component {
     //TODO: use Accordion component
     return (
       <div className='flow-item' id={flowItem.uuid} style={newStyle}>
-        <FlowItemHeader flowItem={flowItem}/>
+        <FlowItemHeaderContainer flowItem={flowItem}/>
         <Choices flowItem={flowItem}/>
         <Conditionals flowItem={flowItem}/>
         <Actions flowItem={flowItem}/>

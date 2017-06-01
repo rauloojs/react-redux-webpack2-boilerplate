@@ -15,19 +15,17 @@ export default class FlowCanvasView extends Component {
 
     JsPlumb.ready(() => {
       JsPlumb.setContainer('canvas');
-      // JsPlumb.setZoom(this.props.zoom);
     });
   }
   render() {
     let nodes = this.props.nodes;
     let zoom = this.props.zoom;
-    let onFlowItemDrag = this.props.onFlowItemDrag;
     this.setZoom();
 
     return (
       <div className='flow-canvas-view'>
         <div className='canvas' id='canvas' style={{transform: 'scale('+ zoom +')'}}>
-          <FlowItems flowItems={nodes} onFlowItemDrag={onFlowItemDrag}/>
+          <FlowItems flowItems={nodes} />
         </div>
       </div>
     );

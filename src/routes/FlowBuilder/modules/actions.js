@@ -70,3 +70,13 @@ export const updateFlowItemPosition = (uuid, newX, newY) => ({
   newX,
   newY
 });
+
+export const addConditionalToQuestion = (uuid) => ({
+  type: 'ADD_CONDITIONAL_TO_QUESTION',
+  uuid
+});
+
+export const addActionToQuestion = (uuid) => ({
+  type: 'ADD_ACTION_TO_QUESTION',
+  uuid
+});

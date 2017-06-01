@@ -41,6 +41,14 @@ const ACTION_HANDLERS = {
   ['UPDATE_FLOWITEM_POSITION'] : (state, action) => {
     console.log(action);
     return state;
+  },
+  ['ADD_CONDITIONAL_TO_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
+  },
+  ['ADD_ACTION_TO_QUESTION'] : (state, action) => {
+    console.log(action);
+    return state;
   }
 }
 // ------------------------------------
