@@ -81,10 +81,9 @@ export const addActionToItem = (uuid) => ({
   uuid
 });
 
-export const addItemToCanvas = (itemType, uuid, x, y) => ({
+export const addItemToCanvas = (itemId, x, y) => ({
   type: 'ADD_ITEM_TO_CANVAS',
-  itemType,
-  uuid,
+  itemId,
   x,
   y
 });

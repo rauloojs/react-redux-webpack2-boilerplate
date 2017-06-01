@@ -87,10 +87,11 @@ export default class FlowBuilderView extends Component {
   render() {
     let nodes = this.props.flow.nodes;
     let zoom = this.props.ui.zoom;
+    let flowItems = this.props.flowItems;
 
     return (
       <Split flex='right' priority='right' fixed={true}>
-        <FlowSidebar />
+        <FlowSidebar flowItems={flowItems}/>
         <FlowCanvasContainer zoom={zoom} nodes={nodes} />
       </Split>
     );

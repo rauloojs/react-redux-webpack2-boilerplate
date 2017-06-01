@@ -1,3 +1,5 @@
+import flowItemFactory from 'FlowUtils'
+
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
@@ -51,8 +53,19 @@ const ACTION_HANDLERS = {
     return state;
   },
   ['ADD_ITEM_TO_CANVAS'] : (state, action) => {
-    console.log(action);
-    return state;
+    let item = state.flowItems.find(item => item.id === action.itemId);
+    let newFlowItem = flowItemFactory(item.name, action.x, action.y,
+                                      item.category, item.type, item.widget);
+    let nodes = state.flow.nodes;
+
+    return Object.assign({}, state, {
+      flow: {
+        nodes: [
+          ...nodes,
+          newFlowItem
+        ]
+      }
+    })
   }
 }
 // ------------------------------------
@@ -64,7 +77,15 @@ const initialState = {
   },
   ui: {
     zoom: 0.8
-  }
+  },
+  flowItems: [
+    {
+      id: 1,
+      name: 'Pregunta de texto',
+      category: 'question',
+      type: 'text'
+    }
+  ]
 }
 export default function flowReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
