@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FlowItemContainer from '../containers/FlowItemContainer';
-import JsPlumb from '../../../modules/JsPlumb'
+import JsPlumb from 'JsPlumb'
 
 
 export default class FlowItemContainers extends Component {

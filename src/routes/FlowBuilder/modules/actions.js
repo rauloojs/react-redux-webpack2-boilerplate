@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Api from '../../../modules/Api'
+import Api from 'Api'
 
 export const actions = {
   getFlowData, setCanvasZoom
@@ -24,41 +24,41 @@ export const setCanvasZoom = (zoom) => ({
 });
 
 
-export const connectQuestionToQuestion = (sourceUuid, targetUuid) => ({
-  type: 'CONNECT_QUESTION_TO_QUESTION',
+export const connectItemToItem = (sourceUuid, targetUuid) => ({
+  type: 'CONNECT_ITEM_TO_ITEM',
   sourceUuid,
   targetUuid
 });
 
-export const connectConditionalToQuestion = (sourceUuid, targetUuid, conditional) => ({
-  type: 'CONNECT_CONDITIONAL_TO_QUESTION',
+export const connectConditionalToItem = (sourceUuid, targetUuid, conditional) => ({
+  type: 'CONNECT_CONDITIONAL_TO_ITEM',
   sourceUuid,
   targetUuid,
   conditional
 });
 
-export const connectActionToQuestion = (sourceUuid, targetUuid, action) => ({
-  type: 'CONNECT_ACTION_TO_QUESTION',
+export const connectActionToItem = (sourceUuid, targetUuid, action) => ({
+  type: 'CONNECT_ACTION_TO_ITEM',
   sourceUuid,
   targetUuid,
   action
 });
 
-export const detachQuestionFromQuestion = (sourceUuid, targetUuid) => ({
-  type: 'DETACH_QUESTION_FROM_QUESTION',
+export const detachItemFromItem = (sourceUuid, targetUuid) => ({
+  type: 'DETACH_ITEM_FROM_ITEM',
   sourceUuid,
   targetUuid
 });
 
-export const detachConditionalFromQuestion = (sourceUuid, targetUuid, conditional) => ({
-  type: 'DETACH_CONDITIONAL_FROM_QUESTION',
+export const detachConditionalFromItem = (sourceUuid, targetUuid, conditional) => ({
+  type: 'DETACH_CONDITIONAL_FROM_ITEM',
   sourceUuid,
   targetUuid,
   conditional
 });
 
-export const detachActionFromQuestion = (sourceUuid, targetUuid, action) => ({
-  type: 'DETACH_ACTION_FROM_QUESTION',
+export const detachActionFromItem = (sourceUuid, targetUuid, action) => ({
+  type: 'DETACH_ACTION_FROM_ITEM',
   sourceUuid,
   targetUuid,
   action
@@ -71,12 +71,20 @@ export const updateFlowItemPosition = (uuid, newX, newY) => ({
   newY
 });
 
-export const addConditionalToQuestion = (uuid) => ({
-  type: 'ADD_CONDITIONAL_TO_QUESTION',
+export const addConditionalToItem = (uuid) => ({
+  type: 'ADD_CONDITIONAL_TO_ITEM',
   uuid
 });
 
-export const addActionToQuestion = (uuid) => ({
-  type: 'ADD_ACTION_TO_QUESTION',
+export const addActionToItem = (uuid) => ({
+  type: 'ADD_ACTION_TO_ITEM',
   uuid
+});
+
+export const addItemToCanvas = (itemType, uuid, x, y) => ({
+  type: 'ADD_ITEM_TO_CANVAS',
+  itemType,
+  uuid,
+  x,
+  y
 });

@@ -3,7 +3,7 @@ import FlowItemHeaderContainer from '../containers/FlowItemHeaderContainer';
 import Choices from './Choices';
 import Conditionals from './Conditionals';
 import Actions from './Actions';
-import JsPlumb, { newTargetEndpoint, newSourceEndpoint } from '../../../modules/JsPlumb'
+import JsPlumb, { newTargetEndpoint, newSourceEndpoint } from 'JsPlumb'
 
 
 export default class FlowItem extends Component {

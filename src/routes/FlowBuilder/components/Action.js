@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JsPlumb, { newSourceEndpoint } from '../../../modules/JsPlumb';
+import JsPlumb, { newSourceEndpoint } from 'JsPlumb';
 
 
 export default class Action extends Component {
