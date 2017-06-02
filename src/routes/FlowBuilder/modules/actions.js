@@ -18,6 +18,11 @@ export const getFlowData = (flowId) => {
   };
 };
 
+export const putFlowData = (flowId) => ({
+  type: 'PUT_FLOW_DATA',
+  flowId
+});
+
 export const setCanvasZoom = (zoom) => ({
   type: 'SET_CANVAS_ZOOM',
   zoom: zoom * 0.1
