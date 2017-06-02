@@ -7,7 +7,9 @@ import { Link } from 'react-router'
 
 
 export default class FlowSidebar extends Component {
-
+  onPutFlowDataClick() {
+    this.props.putFlowData(this.props.flowId);
+  }
   render() {
     let flowItems = this.props.flowItems;
 
@@ -19,6 +21,7 @@ export default class FlowSidebar extends Component {
           <Link to='/' activeClassName='page-layout__nav-item--active'>Home</Link>
           <FlowItemsPalette flowItems={flowItems}/>
           <FlowCanvasSettingsContainer />
+          <button onClick={this.onPutFlowDataClick.bind(this)}>Guardar</button>
         </Box>
       </Sidebar>
     );

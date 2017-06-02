@@ -1,4 +1,6 @@
-import flowItemFactory from 'FlowUtils'
+import flowItemFactory from 'FlowUtils';
+import Api from 'Api';
+
 
 // ------------------------------------
 // Action Handlers
@@ -8,6 +10,15 @@ const ACTION_HANDLERS = {
     return Object.assign({}, state, {
       flow: action.payload
     });
+  },
+  ['PUT_FLOW_DATA'] : (state, action) => {
+    Api('flows/' + action.flowId + '/', {
+      method: 'PUT',
+      data: state.flow,
+    }).then((flow) => {
+      console.log(flow.data);
+    });
+    return state
   },
   ['SET_CANVAS_ZOOM'] : (state, action) => {
     return Object.assign({}, state, {
@@ -73,6 +84,7 @@ const ACTION_HANDLERS = {
 
     let newState = Object.assign({}, state, {
       flow: {
+        ...state.flow,
         nodes: newNodes
       }
     });
@@ -92,9 +104,11 @@ const ACTION_HANDLERS = {
     let newFlowItem = flowItemFactory(item.name, action.x, action.y,
                                       item.category, item.type, item.widget);
     let nodes = state.flow.nodes;
+    let flowData = state.flow;
 
     return Object.assign({}, state, {
       flow: {
+        ...flowData,
         nodes: [
           ...nodes,
           newFlowItem
