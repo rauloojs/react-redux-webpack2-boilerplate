@@ -87,6 +87,9 @@ const ACTION_HANDLERS = {
     let itemIndex = state.flow.nodes.findIndex(item => item.uuid === action.uuid);
 
     let newNodes = [...state.flow.nodes];
+    newNodes[itemIndex] = {
+      ...newNodes[itemIndex]
+    };
     newNodes[itemIndex].x = action.newX;
     newNodes[itemIndex].y = action.newY;
 

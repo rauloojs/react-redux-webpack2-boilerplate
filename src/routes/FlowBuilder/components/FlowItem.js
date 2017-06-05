@@ -29,13 +29,19 @@ export default class FlowItem extends Component {
   }
   render() {
     let flowItem = this.props.flowItem || {};
-    let newStyle = {left: flowItem.x, top: flowItem.y}
+    let newStyle = {left: flowItem.x, top: flowItem.y};
+    let choices = null;
+
+    
+    if (flowItem.options.question_type === 'multiple_choice') {
+      choices = <Choices flowItem={flowItem}/>;
+    }
 
     //TODO: use Accordion component
     return (
       <div className='flow-item' id={flowItem.uuid} style={newStyle}>
         <FlowItemHeaderContainer flowItem={flowItem}/>
-        <Choices flowItem={flowItem}/>
+        {choices}
         <Conditionals flowItem={flowItem}/>
         <Actions flowItem={flowItem}/>
       </div>

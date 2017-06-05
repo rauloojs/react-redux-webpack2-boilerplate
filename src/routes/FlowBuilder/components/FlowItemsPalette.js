@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import FlowItemDraggable from './FlowItemDraggable';
 import $ from 'jquery';
 import 'jquery-ui';
+import Box from 'grommet/components/Box';
+import Menu from 'grommet/components/Menu';
+import Anchor from 'grommet/components/Anchor';
 
 
 export default class FlowItemsPalette extends Component {
@@ -22,11 +25,16 @@ export default class FlowItemsPalette extends Component {
     let flowItems = this.props.flowItems;
 
     return (
-      <div>
-        {flowItems.map((flowItem, key) =>
-          <FlowItemDraggable key={key} id={'fi-draggable-' + key} flowItem={flowItem} />
-        )}
-      </div>
+      <Box flex='grow'
+    justify='start'>
+        <Menu primary={true}>
+          {flowItems.map((flowItem, key) =>
+            <Anchor key={key}>
+              <FlowItemDraggable key={key} id={'fi-draggable-' + key} flowItem={flowItem} />
+            </Anchor>
+          )}
+        </Menu>
+      </Box>
     );
   }
 }
