@@ -9,7 +9,7 @@ export const actions = {
 // ------------------------------------
 export const getFlowData = (flowId) => {
   return (dispatch, getState) => {
-    return Api('flows/' + flowId + '/').then((flow) => {
+    return Api('flows/' + flowId + '/?version=draft').then((flow) => {
       dispatch({
         type    : 'GET_FLOW_DATA',
         payload : flow.data
@@ -35,16 +35,18 @@ export const connectItemToItem = (sourceUuid, targetUuid) => ({
   targetUuid
 });
 
-export const connectConditionalToItem = (sourceUuid, targetUuid, conditional) => ({
+export const connectConditionalToItem = (sourceUuid, index, targetUuid, conditional) => ({
   type: 'CONNECT_CONDITIONAL_TO_ITEM',
   sourceUuid,
+  index,
   targetUuid,
   conditional
 });
 
-export const connectActionToItem = (sourceUuid, targetUuid, action) => ({
+export const connectActionToItem = (sourceUuid, index, targetUuid, action) => ({
   type: 'CONNECT_ACTION_TO_ITEM',
   sourceUuid,
+  index,
   targetUuid,
   action
 });
@@ -55,16 +57,18 @@ export const detachItemFromItem = (sourceUuid, targetUuid) => ({
   targetUuid
 });
 
-export const detachConditionalFromItem = (sourceUuid, targetUuid, conditional) => ({
+export const detachConditionalFromItem = (sourceUuid, index, targetUuid, conditional) => ({
   type: 'DETACH_CONDITIONAL_FROM_ITEM',
   sourceUuid,
+  index,
   targetUuid,
   conditional
 });
 
-export const detachActionFromItem = (sourceUuid, targetUuid, action) => ({
+export const detachActionFromItem = (sourceUuid, index, targetUuid, action) => ({
   type: 'DETACH_ACTION_FROM_ITEM',
   sourceUuid,
+  index,
   targetUuid,
   action
 });
@@ -83,6 +87,11 @@ export const addConditionalToItem = (uuid) => ({
 
 export const addActionToItem = (uuid) => ({
   type: 'ADD_ACTION_TO_ITEM',
+  uuid
+});
+
+export const addChoiceToItem = (uuid) => ({
+  type: 'ADD_CHOICE_TO_ITEM',
   uuid
 });
 

@@ -162,7 +162,7 @@ module.exports = {
     compress: isProduction,
     inline: !isProduction,
     hot: !isProduction,
-    host: '127.0.0.1',
+    host: 'localtuny.localhost',
     stats: {
       assets: true,
       children: false,
