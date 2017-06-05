@@ -3,7 +3,9 @@ import { updateFlowItemPosition } from '../modules/actions'
 import FlowItem from '../components/FlowItem'
 
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  flow: state.flow
+});
 
 const mapDispatchToProps = {
   updateFlowItemPosition

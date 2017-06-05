@@ -4,7 +4,7 @@ import JsPlumb, { newSourceEndpoint } from 'JsPlumb'
 
 export default class Conditional extends Component {
   genId() {
-    return 'conditional' + this.props.index + '_' + this.props.uuid;
+    return 'conditional_' + this.props.index + '_' + this.props.uuid;
   }
   componentDidMount() {
     let id = this.genId();

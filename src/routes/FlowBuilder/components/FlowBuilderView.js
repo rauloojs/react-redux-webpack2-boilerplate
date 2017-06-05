@@ -12,13 +12,15 @@ export default class FlowBuilderView extends Component {
     if (items[0].startsWith('conditional')) {
       return {
         type: 'conditional',
-        id: items[1]
+        id: items[2],
+        index: items[1]
       };
     } else {
       if (items[0].startsWith('action')) {
         return {
           type: 'action',
-          id: items[1]
+          id: items[2],
+          index: items[1]
         };
       } else {
         return {
@@ -39,10 +41,10 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.connectConditionalToItem(sourceData.id, target, source)
+            component.props.connectConditionalToItem(sourceData.id, sourceData.index, target, source)
             break;
           case 'action':
-            component.props.connectActionToItem(sourceData.id, target, source)
+            component.props.connectActionToItem(sourceData.id, sourceData.index, target, source)
             break;
           default:
             component.props.connectItemToItem(source, target)
@@ -56,10 +58,10 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.detachConditionalFromItem(sourceData.id, target, source)
+            component.props.detachConditionalFromItem(sourceData.id, sourceData.index, target, source)
             break;
           case 'action':
-            component.props.detachActionFromItem(sourceData.id, target, source)
+            component.props.detachActionFromItem(sourceData.id, sourceData.index, target, source)
             break;
           default:
             component.props.detachItemFromItem(source, target)
@@ -73,10 +75,10 @@ export default class FlowBuilderView extends Component {
 
         switch (sourceData.type) {
           case 'conditional':
-            component.props.detachConditionalFromItem(sourceData.id, target, source)
+            component.props.detachConditionalFromItem(sourceData.id, sourceData.index, target, source)
             break;
           case 'action':
-            component.props.detachActionFromItem(sourceData.id, target, source)
+            component.props.detachActionFromItem(sourceData.id, sourceData.index, target, source)
             break;
           default:
             component.props.detachItemFromItem(source, target)

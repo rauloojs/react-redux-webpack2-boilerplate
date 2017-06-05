@@ -2,6 +2,19 @@ import flowItemFactory from 'FlowUtils';
 import Api from 'Api';
 
 
+const updateNodes = (state, newNodes) => {
+  let flow = {...state.flow};
+
+  return {
+    ...state,
+    flow: {
+      ...flow,
+      nodes: newNodes
+    }
+  };
+}
+
+
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
@@ -35,15 +48,16 @@ const ACTION_HANDLERS = {
     newNodes[sourceIndex].next = action.targetUuid;
     newNodes[targetIndex].previous = action.sourceUuid;
 
-    return Object.assign({}, state, {
-      flow: {
-        nodes: newNodes
-      }
-    });
+    return updateNodes(state, newNodes);
   },
   ['CONNECT_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);
-    return state;
+    let sourceIndex = state.flow.nodes.findIndex(item => item.uuid === action.sourceUuid);
+    let targetIndex = state.flow.nodes.findIndex(item => item.uuid === action.targetUuid);
+    let newNodes = [...state.flow.nodes];
+    newNodes[sourceIndex].conditionals[action.index].next = targetIndex.uuid;
+
+    return updateNodes(state, newNodes);
   },
   ['CONNECT_ACTION_TO_ITEM'] : (state, action) => {
     console.log(action);
@@ -58,13 +72,7 @@ const ACTION_HANDLERS = {
     newNodes[sourceIndex].next = null;
     newNodes[targetIndex].previous = null;
 
-    let newState = Object.assign({}, state, {
-      flow: {
-        nodes: newNodes
-      }
-    });
-
-    return newState;
+    return updateNodes(state, newNodes);
   },
   ['DETACH_CONDITIONAL_FROM_ITEM'] : (state, action) => {
     console.log(action);
@@ -82,39 +90,65 @@ const ACTION_HANDLERS = {
     newNodes[itemIndex].x = action.newX;
     newNodes[itemIndex].y = action.newY;
 
-    let newState = Object.assign({}, state, {
-      flow: {
-        ...state.flow,
-        nodes: newNodes
-      }
-    });
-
-    return newState;
+    return updateNodes(state, newNodes);
   },
   ['ADD_CONDITIONAL_TO_ITEM'] : (state, action) => {
     console.log(action);
-    return state;
+    let index = state.flow.nodes.findIndex(item => item.uuid === action.uuid);
+    let newNodes = [...state.flow.nodes];
+    newNodes[index] = {
+      ...newNodes[index]
+    };
+    newNodes[index].conditionals = newNodes[index].conditionals.slice();
+    newNodes[index].conditionals.push({
+      actions: [],
+      expression: null,
+      next: null,
+      value: null
+    });
+
+    return updateNodes(state, newNodes);
   },
   ['ADD_ACTION_TO_ITEM'] : (state, action) => {
     console.log(action);
-    return state;
+    let index = state.flow.nodes.findIndex(item => item.uuid === action.uuid);
+    let newNodes = [...state.flow.nodes];
+    newNodes[index] = {
+      ...newNodes[index]
+    };
+    newNodes[index].actions = newNodes[index].actions.slice();
+    newNodes[index].actions.push({
+      value: null
+    });
+
+    return updateNodes(state, newNodes);
+  },
+  ['ADD_CHOICE_TO_ITEM'] : (state, action) => {
+    console.log(action);
+    let index = state.flow.nodes.findIndex(item => item.uuid === action.uuid);
+    let newNodes = [...state.flow.nodes];
+    newNodes[index] = {
+      ...newNodes[index],
+      options: {
+        ...newNodes[index].options
+      }
+    };
+    newNodes[index].options.choices = newNodes[index].options.choices.slice();
+    newNodes[index].options.choices.push({
+      name: 'New choice',
+      value: newNodes[index].options.choices.length + 1
+    });
+
+    return updateNodes(state, newNodes);
   },
   ['ADD_ITEM_TO_CANVAS'] : (state, action) => {
     let item = state.flowItems.find(item => item.id === action.itemId);
     let newFlowItem = flowItemFactory(item.name, action.x, action.y,
                                       item.category, item.type, item.widget);
-    let nodes = state.flow.nodes;
-    let flowData = state.flow;
+    let newNodes = [...state.flow.nodes];
+    newNodes.push(newFlowItem);
 
-    return Object.assign({}, state, {
-      flow: {
-        ...flowData,
-        nodes: [
-          ...nodes,
-          newFlowItem
-        ]
-      }
-    })
+    return updateNodes(state, newNodes);
   }
 }
 // ------------------------------------
