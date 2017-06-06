@@ -36,6 +36,7 @@ const ACTION_HANDLERS = {
   ['SET_CANVAS_ZOOM'] : (state, action) => {
     return Object.assign({}, state, {
       ui: {
+        ...state.ui,
         zoom: action.zoom
       }
     });
@@ -164,7 +165,7 @@ const initialState = {
   ui: {
     zoom: 0.8,
     rightSidebarActive: true,
-    rightSidebarView: 'FLOW'
+    rightSidebarView: 'ACTION'
   },
   flowItems: [
     {
