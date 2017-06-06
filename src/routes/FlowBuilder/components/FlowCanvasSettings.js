@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NumberInput from 'grommet/components/NumberInput';
+import FormField from 'grommet/components/FormField';
 
 
 export default class FlowCanvasSettings extends Component {
@@ -10,9 +10,9 @@ export default class FlowCanvasSettings extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onZoomUpdate.bind(this)}>
-          <NumberInput defaultValue={10} onChange={this.onZoomUpdate.bind(this)} />
-        </form>
+        <FormField>
+          <input min='1' max='10' type='range' defaultValue={10} onChange={this.onZoomUpdate.bind(this)} />
+        </FormField>
       </div>
     );
   }

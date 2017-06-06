@@ -7,6 +7,28 @@ import CheckBox from 'grommet/components/CheckBox';
 import Select from 'grommet/components/Select';
 import Footer from 'grommet/components/Footer';
 import Button from 'grommet/components/Button';
+import KQueryBuilder from './KQueryBuilder';
+
+
+const fields = [
+  {name: 'customer__first_name', label: 'First Name'},
+  {name: 'customer__last_name', label: 'Last Name'},
+  {name: 'code', label: 'Code'},
+  {name: 'organization__store_format', label: 'Store format'},
+  {name: 'organization__channel', label: 'Channel'},
+  {name: 'organization__extra_field_values__value', label: 'Organization extra field'},
+  {name: 'customer__extra_field_values__value', label: 'Customer extra field'},
+  {name: 'memberships__role__id', label: 'Role'}
+];
+
+const operators = [
+  {label: '=', name: '='},
+  {label: '<', name: 'lt'},
+  {label: '>', name: 'gt'},
+  {label: '<=', name: 'lte'},
+  {label: '>=', name: 'gte'},
+  {label: 'contains', name: 'contains'}
+];
 
 
 export default class FlowForm extends Component {
@@ -43,6 +65,12 @@ export default class FlowForm extends Component {
             <FormField label='Icono'>
               <input type='text'
               defaultValue={'1'} />
+            </FormField>
+            <FormField label='Asignación de clientes'>
+              <KQueryBuilder fields={fields} operators={operators}/>
+            </FormField>
+            <FormField label='Asignación de empleados'>
+              <KQueryBuilder fields={fields} operators={operators}/>
             </FormField>
           </fieldset>
         </FormFields>

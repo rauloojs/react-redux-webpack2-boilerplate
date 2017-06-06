@@ -7,7 +7,7 @@ export default class Choice extends Component {
     let id = 'choice_' + this.props.uuid;
 
     return (
-      <div id={id}>Choice</div>
+      <div id={id}>{choice.name}</div>
     );
   }
 }
