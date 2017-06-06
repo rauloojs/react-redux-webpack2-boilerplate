@@ -9,6 +9,8 @@ import Button from 'grommet/components/Button';
 
 export default class ConditionalForm extends Component {
   render() {
+    let expression = this.props.conditional;
+    let value = this.props.conditional;
 
     return (
       <Form compact={false} fill={false} pad='small'>
@@ -16,10 +18,10 @@ export default class ConditionalForm extends Component {
           <fieldset>
             <legend>Condicional</legend>
             <FormField label='Expresión'>
-              <TextInput defaultValue={null} />
+              <TextInput defaultValue={null} value={expression} />
             </FormField>
             <FormField label='Valor'>
-              <TextInput defaultValue={null} />
+              <TextInput defaultValue={null} value={value}/>
             </FormField>
           </fieldset>
         </FormFields>

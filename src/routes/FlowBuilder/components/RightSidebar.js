@@ -3,7 +3,7 @@ import Sidebar from 'grommet/components/Sidebar';
 import Form from 'grommet/components/Form';
 import FlowForm from './FlowForm';
 import FlowItemForm from './FlowItemForm';
-import ConditionalForm from './ConditionalForm';
+import ConditionalFormContainer from '../containers/ConditionalFormContainer';
 import ActionForm from './ActionForm';
 
 
@@ -17,11 +17,11 @@ export default class RightSidebar extends Component {
       case 'FLOW':
         view = <FlowForm />;
         break;
-      case 'QUESTION':
+      case 'FLOW_ITEM':
         view = <FlowItemForm />;
         break;
       case 'CONDITIONAL':
-        view = <ConditionalForm />;
+        view = <ConditionalFormContainer />;
         break;
       case 'ACTION':
         view = <ActionForm />;

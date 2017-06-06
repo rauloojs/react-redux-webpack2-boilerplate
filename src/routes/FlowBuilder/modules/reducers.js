@@ -153,6 +153,44 @@ const ACTION_HANDLERS = {
     newNodes.push(newFlowItem);
 
     return updateNodes(state, newNodes);
+  },
+  ['SELECT_FLOW_ITEM'] : (state, action) => {
+    console.log(action);
+    return {
+      ...state,
+      selectedFlowItem: {
+        ...action.flowItem
+      }
+    };
+  },
+  ['SELECT_ACTION'] : (state, action) => {
+    console.log(action);
+    return {
+      ...state,
+      selectedAction: {
+        ...action.action
+      }
+    };
+  },
+  ['SELECT_CONDITIONAL'] : (state, action) => {
+    console.log(action);
+    return {
+      ...state,
+      selectedConditional: {
+        ...action.conditional
+      }
+    };
+  },
+  ['OPEN_RIGHT_SIDEBAR'] : (state, action) => {
+    console.log(action);
+    return {
+      ...state,
+      ui: {
+        ...state.ui,
+        rightSidebarActive: true,
+        rightSidebarView: action.view
+      }
+    };
   }
 }
 // ------------------------------------
@@ -167,6 +205,9 @@ const initialState = {
     rightSidebarActive: true,
     rightSidebarView: 'ACTION'
   },
+  selectedFlowItem: undefined,
+  selectedAction: undefined,
+  selectedConditional: undefined,
   flowItems: [
     {
       id: 1,

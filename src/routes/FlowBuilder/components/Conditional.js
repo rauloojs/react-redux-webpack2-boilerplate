@@ -4,7 +4,13 @@ import JsPlumb, { newSourceEndpoint } from 'JsPlumb'
 
 export default class Conditional extends Component {
   genId() {
-    return 'conditional_' + this.props.index + '_' + this.props.uuid;
+    debugger;
+    return 'conditional_' + this.props.index + '_' + this.props.flowItem.uuid;
+  }
+  onEditClick() {
+    this.props.selectFlowItem(this.props.flowItem);
+    this.props.selectConditional(this.props.conditional);
+    this.props.openRightSidebar('CONDITIONAL');
   }
   componentDidMount() {
     let id = this.genId();
@@ -18,7 +24,10 @@ export default class Conditional extends Component {
     let id = this.genId();
 
     return (
-      <div id={id}>Conditional</div>
+      <div id={id}>
+        Conditional
+        <button onClick={this.onEditClick.bind(this)}>Edit</button>
+      </div>
     );
   }
 }

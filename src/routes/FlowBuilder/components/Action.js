@@ -4,7 +4,12 @@ import JsPlumb, { newSourceEndpoint } from 'JsPlumb';
 
 export default class Action extends Component {
   genId() {
-    return 'action_' + this.props.uuid;
+    return 'action_' + this.props.flowItem.uuid;
+  }
+  onEditClick() {
+    this.props.selectFlowItem(this.props.flowItem);
+    this.props.selectAction(this.props.action);
+    this.props.openRightSidebar('ACTION');
   }
   componentDidMount() {
     let id = this.genId();
@@ -18,7 +23,10 @@ export default class Action extends Component {
     let id = this.genId();
 
     return (
-      <div id={id}>Action</div>
+      <div id={id}>
+        Action
+        <button onClick={this.onEditClick.bind(this)}>Edit</button>
+      </div>
     );
   }
 }
