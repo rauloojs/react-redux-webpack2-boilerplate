@@ -21,9 +21,7 @@ export default class RightSidebar extends Component {
     return (
       <div>
         <Sidebar ref='sidebar' size='large' colorIndex='light-2'>
-          <Form compact={false} fill={false} pad='small'>
-            {view}
-          </Form>
+          {view}
         </Sidebar>
       </div>
     );
