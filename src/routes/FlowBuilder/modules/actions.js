@@ -101,3 +101,23 @@ export const addItemToCanvas = (itemId, x, y) => ({
   x,
   y
 });
+
+export const selectFlowItem = (flowItem) => ({
+  type: 'SELECT_FLOW_ITEM',
+  flowItem
+});
+
+export const selectAction = (action) => ({
+  type: 'SELECT_ACTION',
+  action
+});
+
+export const selectConditional = (conditional) => ({
+  type: 'SELECT_CONDITIONAL',
+  conditional
+});
+
+export const openRightSidebar = (view) => ({
+  type: 'OPEN_RIGHT_SIDEBAR',
+  view
+});
