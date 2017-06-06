@@ -162,7 +162,9 @@ const initialState = {
     nodes: []
   },
   ui: {
-    zoom: 0.8
+    zoom: 0.8,
+    rightSidebarActive: true,
+    rightSidebarView: 'FLOW'
   },
   flowItems: [
     {
