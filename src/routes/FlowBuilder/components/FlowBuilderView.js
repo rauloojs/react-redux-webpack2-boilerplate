@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import FlowSidebarContainer from '../containers/FlowSidebarContainer';
 import FlowCanvasContainer from '../containers/FlowCanvasContainer';
+import RightSidebarContainer from '../containers/RightSidebarContainer';
 import Split from 'grommet/components/Split';
+import Sidebar from 'grommet/components/Sidebar';
 import JsPlumb from 'JsPlumb'
 
 
@@ -91,11 +93,19 @@ export default class FlowBuilderView extends Component {
     let zoom = this.props.ui.zoom;
     let flowItems = this.props.flowItems;
     let flowId = this.props.params.flowId;
+    let rightSidebar = null;
+
+    if (this.props.ui.rightSidebarActive) {
+      rightSidebar = <RightSidebarContainer />;
+    }
 
     return (
       <Split flex='right' priority='right' fixed={true}>
         <FlowSidebarContainer flowItems={flowItems} flowId={flowId}/>
-        <FlowCanvasContainer zoom={zoom} nodes={nodes} />
+        <Split flex='left' priority='left' fixed={true}>
+          <FlowCanvasContainer zoom={zoom} nodes={nodes} />
+          {rightSidebar}
+        </Split>
       </Split>
     );
   }

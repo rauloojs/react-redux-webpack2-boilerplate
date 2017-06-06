@@ -3,6 +3,7 @@
 
   .flow-canvas-view {
     overflow: auto;
+    max-height: 100vh;
 
     .canvas {
       width: 3000px;

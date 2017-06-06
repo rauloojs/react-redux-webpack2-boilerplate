@@ -24,12 +24,14 @@ export default class FlowSidebar extends Component {
             Elementos
           </Title>
         </Header>
+        <FlowItemsPalette flowItems={flowItems}/>
+        <FlowCanvasSettingsContainer />
         <Box colorIndex='neutral-1'
+          pad='small'
           full='vertical'>
-          <Link to='/' activeClassName='page-layout__nav-item--active'>Home</Link>
-          <FlowItemsPalette flowItems={flowItems}/>
-          <FlowCanvasSettingsContainer />
           <Button label='Guardar' primary={true} onClick={this.onPutFlowDataClick.bind(this)} />
+          <Button label='Volver al inicio'
+          path='/' />
         </Box>
       </Sidebar>
     );
